@@ -1,0 +1,149 @@
+# DEMO CONFIGURATION — not an approved flight or maintenance limit set.
+# Replace with verified engine data and matching calibration before real-engine use.
+schema_version: 1
+engine_id: austro_ae300_tapas
+profile_version: 0.1.0-demo
+display_name: TAPAS-BH-201 — Austro AE300
+platform: TAPAS-BH-201
+engine_name: Austro AE300
+configuration_status: DEMO — calibration required
+provenance: Names, platform associations, power and supplied displacement follow the
+  user brief, not independent verification. All ranges are illustrative demo UI settings.
+  Original universal_modularity profiles were not supplied.
+specs:
+  powerplant: Austro AE300 • 168 HP • diesel
+  cycle: Diesel / four-stroke
+  displacement_cr: 2.0 L / CR not supplied
+  boost: Not supplied
+  fuel: Diesel / grade pending
+  can_protocol: eKart bridge • demo map
+viewer:
+  type: schematic
+  geometry: Original four-cylinder reference
+  thermal_label: Cylinder head temperature
+  assembly_label: Austro AE300 • reference geometry
+  fuel_label: Diesel injection
+  note: Generic reference model; geometry is not an engine-specific CAD model.
+model_binding:
+  status: REFERENCE_ONLY
+  physics: app/digital_twin/physics_model.py
+  classifier: app/ml_layer/fault_classifier.py
+  calibration: Engine-specific model not supplied
+  note: Original simulator, physics and ML outputs remain reference data; selecting
+    this profile does not load calibrated engine models.
+sensor_map:
+  piston_rpm:
+    label: Engine speed
+    unit: RPM
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_piston_rpm
+    residual_key: res_rpm
+    min: 0
+    max: 6500
+    warning: 5850
+    direction: high
+    low: null
+    residual_warning: 200
+    accent: cyan
+  cht_deg_c:
+    label: Cylinder head temperature
+    unit: °C
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_cht_deg_c
+    residual_key: res_cht
+    min: -40
+    max: 220
+    warning: 180
+    direction: high
+    low: null
+    residual_warning: 15
+    accent: amber
+  egt_deg_c:
+    label: Exhaust gas temperature
+    unit: °C
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_egt_deg_c
+    residual_key: res_egt
+    min: -40
+    max: 850
+    warning: 765
+    direction: high
+    low: null
+    residual_warning: 30
+    accent: amber
+  oil_pressure_psi:
+    label: Oil pressure
+    unit: PSI
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_oil_pressure_psi
+    residual_key: res_oil_pressure
+    min: 0
+    max: 75
+    warning: 35
+    direction: low
+    low: 25
+    residual_warning: 8
+    accent: emerald
+  oil_temp_deg_c:
+    label: Oil temperature
+    unit: °C
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_oil_temp_deg_c
+    residual_key: res_oil_temp
+    min: -40
+    max: 125
+    warning: 110
+    direction: high
+    low: null
+    residual_warning: 15
+    accent: amber
+  bus_voltage:
+    label: eKart bus voltage
+    unit: V
+    source: EKART_BRIDGE
+    expected_key: exp_bus_voltage
+    residual_key: res_bus_voltage
+    min: 0
+    max: 60
+    warning: 55
+    direction: range
+    low: 36
+    residual_warning: 5
+    accent: purple
+  vibration_g:
+    label: Vibration RMS
+    unit: g
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_vibration_g
+    residual_key: res_vibration
+    min: 0
+    max: 5
+    warning: 2
+    direction: high
+    low: null
+    residual_warning: 0.5
+    accent: emerald
+  fuel_flow_lph:
+    label: Fuel flow
+    unit: L/h
+    source: REFERENCE_SIMULATOR
+    expected_key: exp_fuel_flow_lph
+    residual_key: res_fuel_flow
+    min: 0
+    max: 25
+    warning: 22
+    direction: high
+    low: null
+    residual_warning: 3
+    accent: amber
+files:
+- role: Profile + limits + sensor map
+  path: app/engine_profiles/austro_ae300_tapas.yaml
+- role: Reference simulator
+  path: app/telemetry/aero_simulator.py
+- role: Reference physics model
+  path: app/digital_twin/physics_model.py
+- role: Original classifier adapter
+  path: app/ml_layer/fault_classifier.py
+- role: Original model weights (reference)
+  path: app/ml_layer/saved_models/fault_classifier.joblib

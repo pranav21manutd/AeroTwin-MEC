@@ -1,0 +1,54 @@
+[
+  {
+    "time_offset_s": 0.0,
+    "piston_rpm": 3200.0,
+    "cht_deg_c": 128.5,
+    "egt_deg_c": 620.0,
+    "oil_pressure_psi": 46.2,
+    "oil_temp_deg_c": 82.0,
+    "fuel_flow_lph": 7.8,
+    "vibration_g": 0.72,
+    "bus_voltage": 49.2,
+    "bus_current": 38.5,
+    "health_index": 98.5
+  },
+  {
+    "time_offset_s": 10.0,
+    "piston_rpm": 4500.0,
+    "cht_deg_c": 142.0,
+    "egt_deg_c": 685.0,
+    "oil_pressure_psi": 52.0,
+    "oil_temp_deg_c": 88.5,
+    "fuel_flow_lph": 12.4,
+    "vibration_g": 1.15,
+    "bus_voltage": 47.8,
+    "bus_current": 72.0,
+    "health_index": 97.2
+  },
+  {
+    "time_offset_s": 20.0,
+    "piston_rpm": 5800.0,
+    "cht_deg_c": 165.5,
+    "egt_deg_c": 745.0,
+    "oil_pressure_psi": 55.4,
+    "oil_temp_deg_c": 96.0,
+    "fuel_flow_lph": 17.1,
+    "vibration_g": 1.62,
+    "bus_voltage": 46.2,
+    "bus_current": 95.0,
+    "health_index": 94.8
+  },
+  {
+    "time_offset_s": 30.0,
+    "piston_rpm": 5200.0,
+    "cht_deg_c": 178.0,
+    "egt_deg_c": 790.0,
+    "oil_pressure_psi": 22.1,
+    "oil_temp_deg_c": 118.5,
+    "fuel_flow_lph": 15.2,
+    "vibration_g": 2.45,
+    "bus_voltage": 47.0,
+    "bus_current": 82.0,
+    "health_index": 62.0
+  }
+]
